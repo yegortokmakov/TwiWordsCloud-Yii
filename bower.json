@@ -1,0 +1,7 @@
+{
+    "name": "MyProject",
+    "dependencies": {
+        "bootstrap": "*",
+        "wordcloud2.js": "*"
+    }
+}
