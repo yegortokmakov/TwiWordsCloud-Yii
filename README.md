@@ -14,7 +14,7 @@ Storage: SQLite3.
 
 You can test code with internal PHP sever. Just run `sudo php -S 127.0.0.1` from the root directory and point your browser to 'http://127.0.0.1/'.
 
-![Demo](https://github.com/yegortokmakov/sample1/master/dr1.png "Demo screenshot for keyword 'Ukraine'")
+![Demo](https://raw.githubusercontent.com/yegortokmakov/sample1/master/dr1.png "Demo screenshot for keyword 'Ukraine'")
 
 
 INSTALL
