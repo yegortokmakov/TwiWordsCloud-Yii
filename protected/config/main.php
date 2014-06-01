@@ -1,5 +1,7 @@
 <?php
 
+include 'constants.php';
+
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
@@ -70,8 +72,8 @@ return array(
 		'Twt'=>array(
             'class'  => 'application.extensions.twt.Twt',
             'config' => array(
-				'api_key'    => '6NFxMPdPQ2obnLwIVLGMRK7yK',
-				'api_secret' => 'sKd1UlUTAaFKOAi21i4EUB3qlLpiPSj149by8CNqt5gpV9h8UR',
+				'api_key'    => TWITTER_API_KEY,
+				'api_secret' => TWITTER_API_SECRET,
 			),
 		),
 		'TwitterData'=>array(

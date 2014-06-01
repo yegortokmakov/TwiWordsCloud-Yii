@@ -1,0 +1,6 @@
+<?php
+
+# https://apps.twitter.com/
+const TWITTER_API_KEY = 'XXX';
+const TWITTER_API_SECRET = 'XXX';
+
