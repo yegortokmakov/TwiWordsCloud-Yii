@@ -4,6 +4,6 @@ protected/runtime/*
 !protected/runtime/.gitignore
 protected/data/*.db
 themes/classic/views/
-*.DC_Store
+.DC_Store
 protected/config/constants.php
 vendor/

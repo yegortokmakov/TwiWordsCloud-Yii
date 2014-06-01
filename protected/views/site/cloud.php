@@ -32,7 +32,7 @@
     <div class="footer">
       <p>Enter search keyword and press "Go!". Last 300 twits will be fetched and 
           placed in the cloud. <b><?php echo $rates['remaining']; ?> Twitter API requests left.</b></p>
-      <p><?php echo CHtml::encode(Yii::app()->name); ?> &copy; Company <?php echo date('Y'); ?></p>
+      <p><?php echo CHtml::encode(Yii::app()->name); ?> &copy; Company 2014</p>
     </div>
 
   <script>

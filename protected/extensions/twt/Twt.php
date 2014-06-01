@@ -1,8 +1,9 @@
 <?php
 
-class Twt extends CApplicationComponent
-{
+Yii::import('application.extensions.Twt.TwtException');
 
+class Twt extends \CApplicationComponent
+{
     /**
      * Config
      * @var string
@@ -29,9 +30,9 @@ class Twt extends CApplicationComponent
         # Getting access token for further queries
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, 'https://api.twitter.com/oauth2/token');
-        curl_setopt($curl, CURLOPT_HEADER, 0); //выводим заголовки
-        curl_setopt($curl, CURLOPT_POST, 1); //передача данных методом POST
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); //теперь curl вернет нам ответ, а не выведет
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
             'Authorization: Basic ' . $bearer_token,
             'Content-Type: application/x-www-form-urlencoded;charset=UTF-8',
@@ -40,18 +41,18 @@ class Twt extends CApplicationComponent
         $res = curl_exec($curl);
 
         if(!$res) {
-            $error = curl_error($curl).'('.curl_errno($curl).')';
+            $errorText = curl_error($curl).'('.curl_errno($curl).')';
             curl_close($curl);
-            return false;
+            throw new TwtException("CURL: " . $errorText);
         }
+
         curl_close($curl);
 
         $ans = json_decode($res, true);
         if (isset($ans['access_token'])) {
             $this->accessToken = $ans['access_token'];
-            return true;
         } else {
-            return false;
+            throw new TwtException("Invalid response format");
         }
     }
 

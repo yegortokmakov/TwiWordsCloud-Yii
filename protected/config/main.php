@@ -70,7 +70,7 @@ return array(
 			),
 		),
 		'Twt'=>array(
-            'class'  => 'application.extensions.twt.Twt',
+            'class'  => 'application.extensions.Twt.Twt',
             'config' => array(
 				'api_key'    => TWITTER_API_KEY,
 				'api_secret' => TWITTER_API_SECRET,
