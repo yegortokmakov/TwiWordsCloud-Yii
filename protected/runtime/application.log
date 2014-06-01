@@ -953,3 +953,49 @@ REQUEST_URI=/
 in /Users/yegortokmakov/www/sample1/protected/views/site/cloud.php (35)
 in /Users/yegortokmakov/www/sample1/protected/controllers/SiteController.php (28)
 in /Users/yegortokmakov/www/sample1/index.php (21)
+2014/06/01 17:11:58 [error] [exception.CException] exception 'CException' with message 'Property "CConsoleApplication.TwitterData" is not defined.' in /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/base/CModule.php(105): CComponent->__get('TwitterData')
+#1 /Users/yegortokmakov/www/sample1/protected/commands/CacheCommand.php(7): CModule->__get('TwitterData')
+#2 [internal function]: CacheCommand->actionIndex()
+#3 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(CacheCommand), Array)
+#4 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/base/CApplication.php(184): CConsoleApplication->processRequest()
+#7 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/yiic.php(33): CApplication->run()
+#8 /Users/yegortokmakov/www/sample1/protected/yiic.php(7): require_once('/Users/yegortok...')
+#9 /Users/yegortokmakov/www/sample1/protected/yiic(4): require_once('/Users/yegortok...')
+#10 {main}
+---
+2014/06/01 17:14:36 [error] [exception.CException] exception 'CException' with message 'Property "CConsoleApplication.TwitterData" is not defined.' in /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/base/CModule.php(105): CComponent->__get('TwitterData')
+#1 /Users/yegortokmakov/www/sample1/protected/commands/CacheCommand.php(7): CModule->__get('TwitterData')
+#2 [internal function]: CacheCommand->actionIndex()
+#3 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(CacheCommand), Array)
+#4 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/base/CApplication.php(184): CConsoleApplication->processRequest()
+#7 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/yiic.php(33): CApplication->run()
+#8 /Users/yegortokmakov/www/sample1/protected/yiic.php(7): require_once('/Users/yegortok...')
+#9 /Users/yegortokmakov/www/sample1/protected/yiic(4): require_once('/Users/yegortok...')
+#10 {main}
+---
+2014/06/01 17:47:41 [error] [exception.CException] exception 'CException' with message 'Property "CDbCriteria.:key" is not defined.' in /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/db/schema/CDbCriteria.php(160): CComponent->__set(':key', '1')
+#1 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/db/schema/CDbCommandBuilder.php(585): CDbCriteria->__construct(Array)
+#2 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/db/schema/CDbCommandBuilder.php(614): CDbCommandBuilder->createCriteria(Array, Array)
+#3 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/db/ar/CActiveRecord.php(1488): CDbCommandBuilder->createPkCriteria(Object(CDbTableSchema), 'id=:key', Array, Array, ''t'.')
+#4 /Users/yegortokmakov/www/sample1/protected/components/TwitterData.php(31): CActiveRecord->findByPk('id=:key', Array)
+#5 /Users/yegortokmakov/www/sample1/protected/commands/CacheCommand.php(29): TwitterData->deleteCacheEntry('1')
+#6 [internal function]: CacheCommand->actionDelete('1')
+#7 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(CacheCommand), Array)
+#8 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#9 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#10 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/base/CApplication.php(184): CConsoleApplication->processRequest()
+#11 /Users/yegortokmakov/www/sample1/vendor/yiisoft/yii/framework/yiic.php(33): CApplication->run()
+#12 /Users/yegortokmakov/www/sample1/protected/yiic.php(7): require_once('/Users/yegortok...')
+#13 /Users/yegortokmakov/www/sample1/protected/yiic(4): require_once('/Users/yegortok...')
+#14 {main}
+---

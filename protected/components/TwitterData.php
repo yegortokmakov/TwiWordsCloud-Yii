@@ -21,6 +21,16 @@ class TwitterData extends CComponent
 		return Yii::app()->session['limitSearch'];
 	}
 
+	public function getCacheList()
+	{
+		return Request::model()->findAll();
+	}
+
+	public function deleteCacheEntry($key)
+	{
+		return Request::model()->deleteByPk(['id' => $key]);
+	}
+
 	public function getData($keyword, $minCount = 2)
 	{
 		$keyword = $this->prettyWord($keyword);
