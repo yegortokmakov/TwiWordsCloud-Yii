@@ -18,7 +18,7 @@ class CacheCommand extends CConsoleCommand
 
 		echo PHP_EOL;
 		echo 'To delete cache entry use: ' . PHP_EOL;
-		echo '       ./yiic cache delete --num=<Entry #>';
+		echo '       ./protected/yiic cache delete --num=<Entry #>';
 		echo PHP_EOL;
 		echo PHP_EOL;
 	}

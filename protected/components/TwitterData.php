@@ -7,7 +7,7 @@ class TwitterData extends CComponent
 	{
 	}
 
-	public function clearRatesCache()
+	protected function clearRatesCache()
 	{
 		unset(Yii::app()->session['limitSearch']);
 	}
@@ -15,7 +15,7 @@ class TwitterData extends CComponent
 	public function getSearchRates()
 	{
 		if (!isset(Yii::app()->session['limitSearch'])) {
-			Yii::app()->session['limitSearch'] = Yii::app()->Twt->requestRateLimits()['search']['/search/tweets'];
+			Yii::app()->session['limitSearch'] = Yii::app()->Twt->requestRateLimits('search')['search']['/search/tweets'];
 		}
 
 		return Yii::app()->session['limitSearch'];

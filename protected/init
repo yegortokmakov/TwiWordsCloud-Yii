@@ -4,3 +4,4 @@ composer update
 bower update
 sqlite3  protected/data/devres1.db ""
 ./protected/yiic migrate up
+./vendor/phpunit/phpunit/phpunit --bootstrap protected/tests/bootstrap.php --configuration protected/tests/phpunit.xml protected/tests/unit/

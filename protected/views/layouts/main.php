@@ -23,6 +23,7 @@
     <![endif]-->
 
     <script src="/assets/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/jquery.validation/dist/jquery.validate.min.js"></script>
     <script src="/assets/wordcloud2.js/src/wordcloud2.js"></script>
   </head>
 

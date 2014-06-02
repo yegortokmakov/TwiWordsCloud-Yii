@@ -1,17 +1,15 @@
 <?php
 
+$originConfig = require(dirname(__FILE__).'/main.php');
+
 return CMap::mergeArray(
-	require(dirname(__FILE__).'/main.php'),
+	$originConfig,
 	array(
-		'components'=>array(
-			'fixture'=>array(
-				'class'=>'system.test.CDbFixtureManager',
+		'components' => array(
+			'Twt' => array(
+	            'class' => 'application.tests.unit.TwtMock',
 			),
-			/* uncomment the following to provide test database connection
-			'db'=>array(
-				'connectionString'=>'DSN for test database',
-			),
-			*/
+			'TwtOrigin' => $originConfig['components']['Twt'],
 		),
 	)
 );

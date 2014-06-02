@@ -62,23 +62,26 @@ class Twt extends \CApplicationComponent
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, 'https://api.twitter.com/1.1/application/rate_limit_status.json?resources=' . $resources);
-        curl_setopt($curl, CURLOPT_HEADER, 0); //выводим заголовки
-        curl_setopt($curl, CURLOPT_POST, 0); //передача данных методом POST
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); //теперь curl вернет нам ответ, а не выведет
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_POST, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
             'Authorization: Bearer ' . $this->accessToken,
         ));
         $res = curl_exec($curl);
 
         if(!$res) {
-            $error = curl_error($curl).'('.curl_errno($curl).')';
-            echo $error;
-            die;
+            $errorText = curl_error($curl).'('.curl_errno($curl).')';
+            curl_close($curl);
+            throw new TwtException("CURL: " . $errorText);
         }
-        else {
-            $ans = json_decode($res, true);
-        }
+
         curl_close($curl);
+
+        $ans = json_decode($res, true);
+        if (!isset($ans['resources'])) {
+            throw new TwtException("Invalid response format");
+        }
 
         return $ans['resources'];
     }
@@ -102,23 +105,22 @@ class Twt extends \CApplicationComponent
         # Getting twitter feed
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, 'https://api.twitter.com/1.1/search/tweets.json?' . http_build_query($options));
-        curl_setopt($curl, CURLOPT_HEADER, 0); //выводим заголовки
-        curl_setopt($curl, CURLOPT_POST, 0); //передача данных методом POST
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); //теперь curl вернет нам ответ, а не выведет
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_POST, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
             'Authorization: Bearer ' . $this->accessToken,
         ));
         $res = curl_exec($curl);
 
         if(!$res) {
-            $error = curl_error($curl).'('.curl_errno($curl).')';
-            echo $error;
-            die;
+            $errorText = curl_error($curl).'('.curl_errno($curl).')';
+            curl_close($curl);
+            throw new TwtException("CURL: " . $errorText);
         }
-        else {
-            $ans = json_decode($res, true);
-        }
+
         curl_close($curl);
+
         return $res;
     }
 }//end of method

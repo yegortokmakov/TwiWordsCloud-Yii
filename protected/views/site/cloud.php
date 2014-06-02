@@ -37,6 +37,8 @@
 
   <script>
   jQuery(function ($) {
+    // has-error
+
     var $canvas = $('#canvas');
     var devicePixelRatio = 1;
     var options = {};

@@ -3,11 +3,16 @@
     "version": "0.0.1",
     "require": {
         "php": ">5.4",
-        "yiisoft/yii": "dev-master",
-        "phpunit/phpunit": "4.1.*",
-        "monolog/monolog": "1.0.*"
+        "yiisoft/yii": "dev-master"
     },
-     "scripts": {
+    "require-dev": {
+        "phpunit/phpunit": "4.1.*",
+        "phpunit/phpunit-selenium": ">=1.2",
+        "phpunit/php-invoker": "*",
+        "phpunit/dbunit": ">=1.2",
+        "phpunit/phpunit-story": "*"
+    },
+    "scripts": {
         "post-install-cmd": [
             "bower install"
         ],
