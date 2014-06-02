@@ -2,9 +2,8 @@
 
 mb_internal_encoding('utf-8');
 
-// change the following paths if necessary
-$yii=dirname(__FILE__).'/vendor/yiisoft/yii/framework/yii.php';
-$config=dirname(__FILE__).'/protected/config/main.php';
+$yii    = '../vendor/yiisoft/yii/framework/yii.php';
+$config = '../protected/config/main.php';
 
 // remove the following lines when in production mode
 defined('YII_DEBUG') or define('YII_DEBUG',true);

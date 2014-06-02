@@ -1,10 +1,9 @@
 composer.lock
-assets/*
-!assets/.gitignore
+public_html/assets/*
+!public_html/assets/.gitignore
 protected/runtime/*
 !protected/runtime/.gitignore
 protected/data/*.db
-themes/classic/views/
 .DS_Store
 protected/config/constants.php
 vendor/

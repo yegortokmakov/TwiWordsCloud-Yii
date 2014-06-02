@@ -104,7 +104,7 @@ class TwitterData extends CComponent
 
 	protected function prettyWord($word)
 	{
-		$word = str_replace(['!', ',', '.', '-', '"', '(', ')', '#', '\'', ':', "\n"], '', $word);
+		$word = preg_replace("/[^a-zA-Z0-9@]+/", "", $word);
 		$word = ucfirst(strtolower($word));
 
 		return $word;

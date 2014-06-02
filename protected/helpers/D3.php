@@ -16,7 +16,7 @@ class D3
 
     public static function formCloudData ($data)
     {
-        if(!count($data)) return '';
+        if(!is_array($data)) $data = [];
 
         $maxSize = max($data);
 
@@ -24,7 +24,7 @@ class D3
         foreach ($data as $key => $value) {
             $output[] = [(string)$key, (string)$value];
         }
-        // return "[['foo', 12], ['bar', 6]]";
+
         return json_encode($output);
     }
 }

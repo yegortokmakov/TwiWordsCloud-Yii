@@ -17,6 +17,12 @@ class RequestForm extends CFormModel
 		return array(
 			// keyword is required
 			array('keyword', 'required'),
+			// keyword is alphanumeric
+			array('keyword', 'match',
+				'pattern'    => '/^[A-Za-z0-9]+$/',
+				'allowEmpty' => false,
+				'message'    => 'Keyword can contain only alphanumeric characters.'
+			),
 		);
 	}
 

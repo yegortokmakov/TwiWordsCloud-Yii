@@ -1,96 +1,113 @@
 
-      <div class="jumbotron">
-        <h1>Twits words cloud</h1>
-        <p class="lead">Enter search keyword in field below and press "Go!". Last 300 twits will be fetched and 
-          placed in the cloud. <?php echo $rates['remaining']; ?> Twitter API requests left.
-        </p>
+    <?php $form=$this->beginWidget('CActiveForm', array(
+        'id'                     => 'request-form',
+        'enableClientValidation' => true,
+        'clientOptions'          => array(
+            'validateOnSubmit'=>true,
+        ),
+    )); ?>
 
-        <?php $form=$this->beginWidget('CActiveForm', array(
-            'id'                     => 'request-form',
-            'enableClientValidation' => true,
-            'clientOptions'          => array(
-                'validateOnSubmit'=>true,
-            ),
-        )); ?>
+        <div class="input-group keyword-form">
+        <?php
+            echo $form->textField($model,'keyword', array(
+                    'class'       => 'form-control',
+                    'placeholder' => $model->getAttributeLabel('keyword'),
+                ));
+            echo '<span class="input-group-btn">';
+            echo CHtml::submitButton('Go!', array(
+                    'class' => 'btn btn-default',
+                ));
+            echo '</span>';
+        ?>
+        </div>
 
-            <div class="input-group input-group-lg">
+    <?php $this->endWidget(); ?>
 
-            <?php
-                echo $form->textField($model,'keyword', array(
-                        'class'       => 'form-control',
-                        'placeholder' => $model->getAttributeLabel('keyword'),
-                    ));
-                echo '<span class="input-group-btn">';
-                echo CHtml::submitButton('Go!', array(
-                        'class' => 'btn btn-default',
-                    ));
-                echo '</span>';
-            ?>
+    <div id="metrics">
+      <canvas id="canvas" class="canvas"></canvas>
+    </div>
 
-            </div><!-- /input-group -->
+    <div class="footer">
+      <p>Enter search keyword and press "Go!". Last 300 twits will be fetched and 
+          placed in the cloud. <b><?php echo $rates['remaining']; ?> Twitter API requests left.</b></p>
+      <p><?php echo CHtml::encode(Yii::app()->name); ?> &copy; Company 2014</p>
+    </div>
 
-        <?php $this->endWidget(); ?>
+  <script>
+  jQuery(function ($) {
+    validateKeyword = function (event) {
+      var keyword = $('#RequestForm_keyword').val();
+      if(/^[a-zA-Z0-9]+$/.test(keyword)) {
+        $('.keyword-form').removeClass('has-error');
+        return true;
+      }else{
+        $('.keyword-form').addClass('has-error');
+        return false;
+      }
+    };
 
+    $('#request-form').submit(validateKeyword);
+    $('#RequestForm_keyword').blur(validateKeyword);
 
-      </div>
+    var $canvas = $('#canvas');
+    var devicePixelRatio = 1;
+    var options = {};
 
+    options.gridSize = Math.round(16 * $('#canvas').width() / 1024);
+    options.weightFactor = function (size) {
+      return Math.pow(size, 2) * $('#canvas').width() / 1024;
+    };
 
-      <div class="row metrics" style="bsorder:1px solid #DEDEDE;">
-    <script>
-    //*
-    width = parseInt(d3.select(".metrics").style("width"))
-
-    var diameter = width,
-        format = d3.format(",d"),
-        color = d3.scale.category20c();
-
-    var bubble = d3.layout.pack()
-        .sort(null)
-        .size([diameter, diameter])
-        .padding(1.5);
-
-    var svg = d3.select(".metrics").append("svg")
-        .attr("width", diameter)
-        .attr("height", diameter)
-        .attr("class", "bubble");
-
-    var twiData = JSON.parse('<?php echo D3::formGraphData($data); ?>');
-    run(twiData);
-
-    function run(root) {
-      var node = svg.selectAll(".node")
-          .data(bubble.nodes(classes(root))
-          .filter(function(d) { return !d.children; }))
-        .enter().append("g")
-          .attr("class", "node")
-          .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
-      node.append("title")
-          .text(function(d) { return d.className + ": " + format(d.value); });
-
-      node.append("circle")
-          .attr("r", function(d) { return d.r; })
-          .style("fill", function(d) { return color(d.packageName); });
-
-      node.append("text")
-          .attr("dy", ".3em")
-          .style("text-anchor", "middle")
-          .text(function(d) { return d.className.substring(0, d.r / 3); });
+    if (('devicePixelRatio' in window) &&
+        window.devicePixelRatio !== 1) {
+      devicePixelRatio = parseFloat(window.devicePixelRatio);
     }
 
-    // Returns a flattened hierarchy containing all leaf nodes under the root.
-    function classes(root) {
-      var classes = [];
+    var width = Math.floor($('#metrics').width() * 0.7);
+    var height = Math.floor(width * 0.6);
+    var pixelWidth = width;
+    var pixelHeight = height;
 
-      function recurse(name, node) {
-        if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-        else classes.push({packageName: name, className: node.name, value: node.size});
+    if (devicePixelRatio !== 1) {
+      $canvas.css({'width': width + 'px', 'height': height + 'px'});
+
+      pixelWidth *= devicePixelRatio;
+      pixelHeight *= devicePixelRatio;
+    } else {
+      $canvas.css({'width': '', 'height': '' });
+    }
+
+    $canvas.attr('width', pixelWidth);
+    $canvas.attr('height', pixelHeight);
+
+    if (devicePixelRatio !== 1) {
+      if (!('gridSize' in options)) {
+        options.gridSize = 8;
+      }
+      options.gridSize *= devicePixelRatio;
+
+      if (options.origin) {
+        if (typeof options.origin[0] == 'number')
+          options.origin[0] *= devicePixelRatio;
+        if (typeof options.origin[1] == 'number')
+          options.origin[1] *= devicePixelRatio;
       }
 
-      recurse(null, root);
-      return {children: classes};
+      if (!('weightFactor' in options)) {
+        options.weightFactor = 1;
+      }
+      if (typeof options.weightFactor == 'function') {
+        var origWeightFactor = options.weightFactor;
+        options.weightFactor =
+          function weightFactorDevicePixelRatioWrap() {
+            return origWeightFactor.apply(this, arguments) * devicePixelRatio;
+          };
+      } else {
+        options.weightFactor *= devicePixelRatio;
+      }
     }
 
-    d3.select(self.frameElement).style("height", diameter + "px");
-    </script>
-      </div>
+    options.list = JSON.parse('<?php echo D3::formCloudData($data); ?>');
+    WordCloud(document.getElementById('canvas'), options);
+  });
+  </script>
