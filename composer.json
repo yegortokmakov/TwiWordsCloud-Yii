@@ -1,5 +1,7 @@
 {
-    "name": "yegortokmakov/sample1",
+    "name": "yegortokmakov/twi-words-cloud-yii",
+    "description" : "This small project builds words cloud based on user provided keyword",
+    "license": "LGPL-3.0+",
     "version": "0.0.1",
     "require": {
         "php": ">5.4",

@@ -25,12 +25,11 @@
 
     <div id="metrics">
       <canvas id="canvas" class="canvas"></canvas>
-    </div>
+    </div> <!-- /metrics -->
 
     <div class="footer">
-      <p>Enter search keyword and press "Go!". Last 300 twits will be fetched and 
-          placed in the cloud. <b><?php echo $rates['remaining']; ?> Twitter API requests left.</b></p>
-      <p><?php echo CHtml::encode(Yii::app()->name); ?> &copy; Company 2014</p>
+      <p>Enter search keyword and press "Go!". <b><?php echo $rates['remaining']; ?> Twitter API requests left.</b></p>
+      <p><a href="https://github.com/yegortokmakov/TwiWordsCloud-Yii" target="_blank"><?php echo CHtml::encode(Yii::app()->name); ?></a></p>
     </div>
 
   <script>

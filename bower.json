@@ -1,9 +1,8 @@
 {
     "name": "MyProject",
     "dependencies": {
-        "jquery":            "*",
-        "jquery.validation": "*",
-        "bootstrap":         "*",
+        "jquery":            "2.1.*",
+        "bootstrap":         "3.1.*",
         "wordcloud2.js":     "*"
     }
 }

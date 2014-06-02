@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
     <title><?php echo CHtml::encode(Yii::app()->name); ?></title>
 
-    <!-- Bootstrap core CSS -->
     <link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
     <link href="/css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -23,7 +20,6 @@
     <![endif]-->
 
     <script src="/assets/jquery/dist/jquery.min.js"></script>
-    <script src="/assets/jquery.validation/dist/jquery.validate.min.js"></script>
     <script src="/assets/wordcloud2.js/src/wordcloud2.js"></script>
   </head>
 
