@@ -1,3 +1,4 @@
+composer.lock
 assets/*
 !assets/.gitignore
 protected/runtime/*

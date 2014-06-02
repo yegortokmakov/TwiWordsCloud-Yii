@@ -20,10 +20,10 @@ You can test code with internal PHP sever. Just run `sudo php -S 127.0.0.1` from
 INSTALL
 ------------
 
-+ You will need Twiitter API (https://dev.twitter.com/docs/api/1.1) account set up. Fill in `api_key` and `api_secret` variables in `protected/config/main.php`.
-+ To update database scheme from the project root directory run `./protected/yiic migrate up`.
-+ To update PHP dependencies. Install Composer (https://getcomposer.org/) and run `composer update`.
-+ To update JavaScript dependencies. Install Bower (http://bower.io/) and run `bower update`.
++ Clone this repo
++ Register Twiitter API (https://dev.twitter.com/docs/api/1.1) application.
++ Create file `protected/config/constants.php` (example: constants.php.template) and fill in TWITTER_API_KEY and TWITTER_API_SECRET constants.
++ From the project root directory run `./protected/init`.
 
 
 TODO
