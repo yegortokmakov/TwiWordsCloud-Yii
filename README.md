@@ -2,9 +2,9 @@ TwiWordsCloud
 ======================
 
 This small project builds words cloud based on user provided keyword. Twitter API client consumes 300 
-recent twits and shows only the most popular words from them. The more times it appears 
-in twits the bigger font size it has. As Twitter API has some limit for developers, you can find how 
-much queries left in the page footer.
+recent tweets and shows only the most popular words from them. The more times word appears 
+in tweets the bigger font size it has. As Twitter API has some limit for developers, you can find how 
+much queries left at the bottom of the page footer.
 
 **PHP**: Composer, Yii Framework, PHPUnit.
 **JavaScript**: Bower, Jquery, wordcloud2.js plugin.
@@ -12,7 +12,7 @@ much queries left in the page footer.
 
 You can try with internal PHP sever (PHP >=5.4). Run `sudo php -S 127.0.0.1` from the public_html directory and point your browser to http://127.0.0.1/.
 
-![Demo](https://raw.githubusercontent.com/yegortokmakov/sample1/master/dr1.png "Demo screenshot for keyword 'Ukraine'")
+![Demo](https://raw.githubusercontent.com/yegortokmakov/sample1/master/screenshot1.png "Demo screenshot for keyword 'Ukraine'")
 
 If you are going to use this code, please check licenses for project dependency libraries. 
 
